@@ -15,17 +15,17 @@ import java.util.Date;
 public class DateQuery {
    private String field;
     Date start;
-    Comparison operators;
+    Comparison comparision;
     Date end;
     Boolean excludedHours = true;
 
     public DateQuery() {
     }
 
-    public DateQuery(String field, Date start, Comparison operators, Date end,Boolean excludedHours) {
+    public DateQuery(String field, Date start, Comparison comparison, Date end,Boolean excludedHours) {
         this.field = field;
         this.start = start;
-        this.operators = operators;
+        this.comparision = comparision;
         this.end = end;
         this.excludedHours= excludedHours;
     }
@@ -41,17 +41,18 @@ public class DateQuery {
         this.field = field;
     }
 
+    public Comparison getComparision() {
+        return comparision;
+    }
+
+    public void setComparision(Comparison comparision) {
+        this.comparision = comparision;
+    }
+
    
     
     
-    
-    public Comparison getOperators() {
-        return operators;
-    }
-
-    public void setOperators(Comparison operators) {
-        this.operators = operators;
-    }
+  
 
     public Date getStart() {
         return start;
@@ -80,7 +81,7 @@ public class DateQuery {
     public static class Builder {
    private String field;
         Date start;
-        Comparison operators;
+        Comparison comparision;
         Date end;
         Boolean excludedHours = true;
 
@@ -93,8 +94,8 @@ public class DateQuery {
             return this;
         }
 
-        public Builder operators(Comparison operators) {
-            this.operators = operators;
+        public Builder comparison(Comparison comparison) {
+            this.comparision = comparison;
             return this;
         }
 
@@ -109,7 +110,7 @@ public class DateQuery {
         }
 
         public DateQuery build() {
-            return new DateQuery(field, start, operators, end, excludedHours);
+            return new DateQuery(field, start, comparision, end, excludedHours);
         }
 
     }

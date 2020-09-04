@@ -16,7 +16,7 @@ import com.avbravo.jmoordbcoreexamples.enumerations.Logic;
 public class Query {
 
     private String field;
-      Comparison operators;
+      Comparison comparision;
     private Object value;
   
     Logic binary;
@@ -26,9 +26,9 @@ public class Query {
     public Query() {
     }
 
-    public Query(String field, Comparison operators, Object value, Logic binary, Query query, DateQuery dateQuery) {
+    public Query(String field, Comparison comparision, Object value, Logic binary, Query query, DateQuery dateQuery) {
         this.field = field;
-        this.operators = operators;
+        this.comparision = comparision;
         this.value = value;
         this.binary = binary;
         this.query = query;
@@ -64,17 +64,18 @@ public class Query {
         this.value = value;
     }
 
+    public Comparison getComparision() {
+        return comparision;
+    }
+
+    public void setComparision(Comparison comparision) {
+        this.comparision = comparision;
+    }
+
   
 
    
 
-    public Comparison getOperators() {
-        return operators;
-    }
-
-    public void setOperators(Comparison operators) {
-        this.operators = operators;
-    }
 
     public Query getQuery() {
         return query;
@@ -97,7 +98,7 @@ public class Query {
     public static class Builder {
    private String field;
     private Object value;
-    Comparison operators;
+    Comparison comparison;
     Logic binary;
     Query query;
     DateQuery dateQuery;
@@ -113,8 +114,8 @@ public class Query {
         }
         
         
-        public Builder operators (Comparison operators) {
-            this.operators = operators;
+        public Builder comparison (Comparison comparison) {
+            this.comparison = comparison;
             return this;
         }
         public Builder binary( Logic binary) {
@@ -133,7 +134,7 @@ public class Query {
         }
 
         public Query build() {
-            return new Query(field, operators, value, binary, query, dateQuery);
+            return new Query(field, comparison, value, binary, query, dateQuery);
         }
 
     }

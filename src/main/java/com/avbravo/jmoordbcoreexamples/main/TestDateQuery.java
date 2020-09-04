@@ -32,7 +32,7 @@ public class TestDateQuery {
             DateQuery dateQuery1 = new DateQuery.Builder().
                     field("fecha")
                     .start(new Date())
-                    .operators(Comparison.BETWEEN)
+                    .comparison(Comparison.BETWEEN)
                     .end(new Date())
                     .excludedHours(true)
                     .build();
@@ -41,7 +41,7 @@ public class TestDateQuery {
             DateQuery dateQuery2 = new DateQuery.Builder().
                     field("fechanacimiento")
                     .start(new Date())
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .build();
 
             Bson filterDate = repository.queryCreateDate(dateQuery1);

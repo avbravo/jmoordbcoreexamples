@@ -34,14 +34,14 @@ public class TestQuery {
             */
             Query query = new Query.Builder().
                     field("iddepartament")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value(2)
                     .build();
             repository.analizeQuery(query);
 System.out.println("====================================");
             Query queryString = new Query.Builder().
                     field("username")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .build();
             
@@ -50,11 +50,11 @@ System.out.println("====================================");
             // username="avbravo and active = true
             Query queryCombined = new Query.Builder().
                     field("username10")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .query(new Query.Builder().
                                     field("active10")
-                                    .operators(Comparison.EQ)
+                                    .comparison(Comparison.EQ)
                                     .value(false)
                                     .build()
                     )
@@ -65,15 +65,15 @@ System.out.println("====================================");
             // username="avbravo and active = true or photo != ""
             Query queryCombined3 = new Query.Builder().
                     field("username20")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .query(new Query.Builder().
                                     field("active20")
-                                    .operators(Comparison.EQ)
+                                    .comparison(Comparison.EQ)
                                     .value(false)
                                     .query(new Query.Builder().
                                                     field("photo20")
-                                                    .operators(Comparison.NE)
+                                                    .comparison(Comparison.NE)
                                                     .value("")
                                                     .build()
                                     ).build()
@@ -89,7 +89,7 @@ System.out.println("====================================");
                     dateQuery(new DateQuery.Builder().
                             field("fecha30")
                             .start(new Date())
-                            .operators(Comparison.BETWEEN)
+                            .comparison(Comparison.BETWEEN) 
                             .end(new Date())
                             .excludedHours(true)
                             .build()
@@ -100,13 +100,13 @@ System.out.println("====================================");
             //2 username = "avbravo and datequery () en el mismo query
             Query queryCombinedDate2 = new Query.Builder().
                     field("username40")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .binary(Logic.AND)
                     .dateQuery(new DateQuery.Builder().
                             field("fecha40")
                             .start(new Date())
-                            .operators(Comparison.BETWEEN)
+                            .comparison(Comparison.BETWEEN)
                             .end(new Date())
                             .excludedHours(true)
                             .build()
@@ -117,14 +117,14 @@ System.out.println("====================================");
             //3 username = "avbravo and datequery () en el mismo query
             Query queryCombinedDate3 = new Query.Builder().
                     field("username50")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .binary(Logic.AND)
                     .query(new Query.Builder().
                                     dateQuery(new DateQuery.Builder().
                                             field("fecha51")
                                             .start(new Date())
-                                            .operators(Comparison.BETWEEN)
+                                            .comparison(Comparison.BETWEEN)
                                             .end(new Date())
                                             .excludedHours(true)
                                             .build()
@@ -136,18 +136,18 @@ System.out.println("====================================");
             // username = "avbravo and datequery () y activo = true
             Query queryCombinedDate4 = new Query.Builder().
                     field("username60")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .binary(Logic.AND)
                     .query(new Query.Builder().
                                     field("active60")
-                                    .operators(Comparison.EQ)
+                                    .comparison(Comparison.EQ)
                                     .value(true)
                                     .binary(Logic.AND)
                                     .dateQuery(new DateQuery.Builder().
                                             field("fecha60")
                                             .start(new Date())
-                                            .operators(Comparison.BETWEEN)
+                                            .comparison(Comparison.BETWEEN)
                                             .end(new Date())
                                             .excludedHours(true)
                                             .build()
@@ -161,13 +161,13 @@ System.out.println("====================================");
             //2 username = "avbravo and datequery () en el mismo query
             Query queryRestringuido = new Query.Builder().
                     field("username70")
-                    .operators(Comparison.EQ)
+                    .comparison(Comparison.EQ)
                     .value("avbravo")
                     .binary(Logic.AND)
                     .dateQuery(new DateQuery.Builder().
                             field("fecha70")
                             .start(new Date())
-                            .operators(Comparison.BETWEEN)
+                            .comparison(Comparison.BETWEEN)
                             .end(new Date())
                             .excludedHours(true)
                             .build()
@@ -175,7 +175,7 @@ System.out.println("====================================");
                     )
                     .query(new Query.Builder().
                                     field("active70")
-                                    .operators(Comparison.EQ)
+                                    .comparison(Comparison.EQ)
                                     .value(false)
                                     .build()                          
                     ).build();

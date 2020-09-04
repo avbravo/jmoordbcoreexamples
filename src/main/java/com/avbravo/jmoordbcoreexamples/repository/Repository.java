@@ -83,12 +83,12 @@ public class Repository {
     public Bson queryCreateDate(DateQuery dateQuery) {
         try {
 
-            if (dateQuery.getOperators().equals(Comparison.EQ)) {
+            if (dateQuery.getComparision().equals(Comparison.EQ)) {
 
                 filterDate = Filters.and(Filters.gte(dateQuery.getField(), dateQuery.getStart()),
                         Filters.lte(dateQuery.getField(), dateQuery.getStart()));
             } else {
-                if (dateQuery.getOperators().equals(Comparison.BETWEEN)) {
+                if (dateQuery.getComparision().equals(Comparison.BETWEEN)) {
                     filterDate = Filters.and(Filters.gte(dateQuery.getField(), dateQuery.getStart()),
                             Filters.lte(dateQuery.getField(), dateQuery.getEnd()));
                 }
